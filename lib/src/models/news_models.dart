@@ -37,16 +37,16 @@ class Article {
   String? description;
   String? url;
   String? urlToImage;
-  DateTime publishedAt;
+  String? publishedAt;
   String? content;
 
   Article({
     required this.source,
      this.author,
      this.title,
-     this.description,
+     required this.description,
      this.url,
-     this.urlToImage,
+    required this.urlToImage,
     required this.publishedAt,
      this.content,
   });
@@ -55,10 +55,10 @@ class Article {
         source: Source.fromJson(json["source"]),
         author: json["author"] ?? '',
         title: json["title"] ?? '',
-        description: json["description"] ?? '',
+        description: json["description"],
         url: json["url"] ?? '',
-        urlToImage: json["urlToImage"] ?? '',
-        publishedAt: DateTime.parse(json["publishedAt"]),
+        urlToImage: json["urlToImage"],
+        publishedAt: json["publishedAt"],
         content: json["content"] ?? '',
       );
 
@@ -66,10 +66,10 @@ class Article {
         "source": source.toJson(),
         "author": author ?? '',
         "title": title ?? '',
-        "description": description ?? '',
+        "description": description,
         "url": url ?? '',
-        "urlToImage": urlToImage ?? '',
-        "publishedAt": publishedAt.toIso8601String(),
+        "urlToImage": urlToImage,
+        "publishedAt": publishedAt,
         "content": content ?? '',
       };
 }
